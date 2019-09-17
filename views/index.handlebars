@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/styles/login.css">
+<div class="container" id="box1">
+
+  <!-- Page Header -->
+        
+  <div class="container" id="box2">
+    <h1 id="loginHeader1">
+      Landscape
+    </h1>
+    
+    <h1 id="loginHeader2">
+      Project Management System
+    </h1>
+  </div>
+
+  <!-- Login Form -->
+
+  <div class="container" id="box3">
+            
+    {{!-- <!-- Spacer Conatainer -->
+    <div class="container" id="box4"></div> --}}
+    <br>
+    <div class="container" id="box5">
+      <form id="loginPage" class="loginForm" name="loginForm" action="auth" method="POST">
+        <h3 id="signInHeader">Sign into your account</h3>
+        <input id="username" type="text" placeholder="Username" name="username">
+        <input id="password" type="password" placeholder="Password" name="password">
+        <br>
+        <button id="loginBtn" type="submit" class="btn">Log In</button>
+      </form>
+    </div>
+    <br>
+    <!-- Spacer Conatainer -->
+    {{!-- <div class="container" id="box6"></div> --}}
+
+  </div>
+
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

@@ -1,0 +1,96 @@
+body 
+    {
+        background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg")no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+
+
+/* #btnBox {
+    background-color: #f4e1c9;
+    border: solid 1px black;
+} */
+
+#createJob {
+    margin: 5px;
+}
+
+#addJobsite {
+    margin: 5px;
+}
+
+#addSuper {
+    margin: 5px;
+}
+
+#viewJobs {
+    margin: 5px;
+}
+
+#viewJobsites {
+    margin: 5px;
+}
+
+#viewSuper {
+    margin: 5px;
+}
+
+#viewCustomer {
+    margin: 5px;
+}
+
+#searchJobs {
+    margin: 5px;
+}
+
+#searchSites {
+    margin: 5px;
+}
+
+#searchSuper {
+    margin: 5px;
+}
+
+#create-project {
+    color: lightblue;
+    /* border: solid 1px black; */
+    /* padding-bottom: 20px; */
+}
+
+#create-jobsite {
+    color: lightblue;
+    /* border: solid 1px black; */
+    /* padding-bottom: 20px; */
+}
+
+#create-supervisor {
+    color: lightblue;
+    /* border: solid 1px black; */
+    /* padding-bottom: 20px; */
+}
+
+#search-supervisor {
+    color: lightblue;
+    /* border: solid 1px black; */
+    /* padding-bottom: 20px; */
+}
+
+#search-jobsite {
+    color: lightblue;
+    /* border: solid 1px black; */
+    /* padding-bottom: 20px; */
+}
+
+#search-jobs {
+    color: lightblue;
+    /* border: solid 1px black; */
+    /* padding-bottom: 20px; */
+}
+
+#create-login{
+    color: lightblue;
+
+}

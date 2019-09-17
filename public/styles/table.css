@@ -1,0 +1,35 @@
+body {
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#tableBody {
+    background-color: #012758;
+    border: solid 1px black;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+#managerBtn {
+    background-color: #012758;
+    margin-top: 20px;
+    border: solid 1px white;
+}
+
+#jobSiteTable1 {
+    background-color: #c5e8fb;
+}
+
+#jobSiteTable2 {
+    background-color: #2486bb;
+    color: white;
+}
+
+@media (min-width: 1200px) {
+     .container {
+        max-width: 1180px;
+    }
+}

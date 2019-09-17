@@ -1,0 +1,71 @@
+
+    body {
+      
+      background: url("/images/green_leaves_PNG3654.png"),url("https://i1.wp.com/sjjf.se/wp-content/uploads/2013/08/wooden-texture.jpg?resize=1024%2C576");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    #carousel-container {
+      margin-top: 10%
+    }
+
+    #leaves-images {
+      z-index: 0;
+    }
+    .jumbotron {
+      background: url("https://i1.wp.com/sjjf.se/wp-content/uploads/2013/08/wooden-texture.jpg?resize=1024%2C576")no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      color: whitesmoke;
+    }
+
+    .carousel-item {
+      height: 65vh;
+      min-height: 350px;
+      background: no-repeat center center scroll;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+.our-job-main
+{
+  /* background-color: darkgreen; */
+  color:white;
+	width:100%;
+	height:auto;
+	/* border-bottom:5px #323233 solid; */
+	/* background:#fff; */
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+	position:relative;
+	transition:0.5s;
+	margin-bottom:28px;
+}
+
+.job-front
+{
+  /* background-color: darkgreen; */
+  color:white;
+	width:100%;
+	height:auto;
+	position:relative;
+	z-index:10;
+	/* background:#fff; */
+	padding:15px;
+	bottom:0px;
+	transition: all 0.5s ease;
+}
+
+.our-job-main:hover .job-front
+{
+  background-color: darkseagreen;
+  color: darkgreen;
+}

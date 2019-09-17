@@ -1,0 +1,17 @@
+/* Settings needed for map display */
+
+#map {
+  height: 450px;
+  border: solid 1px black;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.list-group-item {
+  line-height: 2.5;
+}

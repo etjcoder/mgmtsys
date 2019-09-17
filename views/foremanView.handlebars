@@ -1,0 +1,191 @@
+<link href="https://fonts.googleapis.com/css?family=Black+Ops+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quantico&display=swap" rel="stylesheet">
+{{!-- <script src="https://use.fontawesome.com/d7f740ca8e.js"></script> --}}
+<link rel="stylesheet" href="/styles/foreman.css">
+
+{{!-- <div class="container text-center"> --}}
+
+{{!-- FOREMAN NAVBAR  --}}
+<nav class="navbar p-3 navbar-expand-lg navbar-dark border border-dark" style="background-image: linear-gradient( dimgrey,seagreen)">
+    <div class="container">
+        {{!-- <i class="fas fa-globe"></i> --}}
+        <a class="navbar-brand text-center" href="#" style="color: #282828"> Project Management System</a>    
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reports
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="createProjectReport" href="#">Project Reports</a>
+                        {{!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="addTask" href="#">Project Task List</a>
+                        <div class="dropdown-divider"></div> --}}
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Projects
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        {{!-- <a class="dropdown-item" id="createProjectReport" href="#">Project Reports</a>
+                        <div class="dropdown-divider"></div> --}}
+                        <a class="dropdown-item" id="addTask" href="#">Project Task List</a>
+                        {{!-- <div class="dropdown-divider"></div> --}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<br>
+<div class="col-lg-12 text-center">
+    <button id="viewBtn" type="button" class="btn btn-dark">Return Home</button>
+</div>
+
+<br>
+
+{{!-- FOREMAN DASHBOARD --}}
+
+<div class="container text-center">
+    <div class="jumbotron text-light jumbotron-fluid border border-dark rounded-lg" style="background-image: linear-gradient( dimgrey,seagreen)">
+        <div class="container" style="background-image: linear-gradient( dimgrey,seagreen)">
+            <h1 class="display-4 f-dash">Foreman's Dashboard</h1>
+            <p class="lead">Welcome Foreman! You have many tools at your disposal here. Click on the top-right
+                options
+                to get started!</p>
+        </div>
+    </div>
+
+
+    {{!-- PROJECT REPORT FORM  --}}
+
+    <div class="row text-light foreman-project-report">
+        <!-- Enter Job Data Form -->
+        <div class="col text-center card" id="project-info-form" style="background-image: linear-gradient( dimgrey,seagreen)">
+            <h3>Input Job Information</h3>
+            <form id="project-info">
+                <div class="form-group">
+                    {{!-- Inquiry to enter project ID --}}
+                    <label for="project-select">Select your project</label>
+                    <select data-placeholder="" class="form-control user-selection" id="project-id">
+                        {{#each projects}}
+                        <option value="{{id}}">{{project_name}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    {{!-- Hours on Job --}}
+                    <label for="project-hours">How many hours did this job take?</label>
+                    <input type="text" id="project-hours">
+                    <br>
+                    {{!-- Workers on Job --}}
+                    <label for="project-workers">How many workers were on this job?</label>
+                    <input type="text" id="project-workers">
+                    <br>
+                    {{!-- Material Costs --}}
+                    <label for="project-workers">What is your estimated cost of materials?</label>
+                    <input type="text" id="project-materialcosts">
+                    <br>
+                    {{!-- Job Comments --}}
+                    <label for="project-jobcomments">Do you have any comments for this job?</label>
+                    <input type="text" id="project-jobcomments">
+                </div>
+                {{!-- Submit Info  --}}
+                <button type="submit">Input Project Data</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+
+    {{!-- ADD TASK FORM --}}
+    <div class="row add-task">
+        <div class="col text-center card" id="add-task-form" style="background-image: linear-gradient( dimgrey,seagreen)">
+            <h2>Create Project Task List</h2>
+            <form id="create-task">
+
+                <div class="form-group">
+                    {{!-- Inquiry to enter project ID --}}
+                    <label for="id-project-task">Select which project to add a task.</label>
+                    <select data-placeholder="" class="form-control user-selection" id="id-project-task">
+                        {{#each projects}}
+                        <option value="{{id}}">{{project_name}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    {{!-- Input for task name --}}
+                    <label for="task-name">Name a project task</label>
+                    <input type="text" id="task-name">
+                    <br>
+                    {{!-- Input for task details --}}
+                    <label for="task-description">Give some details about what needs to be completed.</label>
+                    <input type="text" id="task-description">
+                    <br>
+
+                </div>
+                <button type="submit">Create Task</button>
+            </form>
+        </div>
+    </div>
+    <br>
+
+
+    <div class="row search-task-row" id="search-tasks">
+        <div class="col-3 text-center card" id="search-task-col" style="background-image: linear-gradient( dimgrey,seagreen)">
+            <form id="search-tasks-form">
+                <div class="form-group">
+                    <label for="task-search"> Which project task list would you like to view?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="tasks-search">
+                        {{#each projects}}
+
+                        <option value="{{id}}">{{project_name}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit">Show Tasks</button>
+            </form>
+        </div>
+        <div class="col-9 tasks-table card table-responsive" style="background-image: linear-gradient( dimgrey,seagreen)">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="tr-task">
+                        <th>Task ID</th>
+                        <th>Task Name</th>
+                        <th>Task Description</th>
+                        <th>Completed?</th>
+                        <th>Mark Status</th>
+                        <th>Delete Task</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tasks-table">
+                    {{!-- {{#each tasks}} --}}
+                    <tr>
+
+                        <td id="tasks-id">{{id}}</td>
+                        <td id="tasks-name">{{task_name}}</td>
+                        <td id="tasks-description">{{task_description}}</td>
+                        <td id="tasks-status">{{task_status}}</td>
+                        <td id="toggle-task-td"></td>
+                        <td id="delete-task-td"></td>
+                    </tr>
+                    {{!-- {{/each}} --}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

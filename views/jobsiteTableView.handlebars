@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="/styles/table.css">
+<div class="container text-center">
+    <div class="row text-center">
+        <div class="col">
+
+            <button id="managerBtn" type="button" class="btn btn-primary">Return</button>
+        </div>
+        {{!-- <div class="col">
+                <button id="foremanBtn" type="button" class="btn">Foreman</button>
+            </div> --}}
+    </div>
+    <!-- Table to Display All Job Info -->
+    <div class="row">
+        <div class="col card" id="tableBody">
+            <div class="table" id="jobSiteTable1">
+                <h1>All Listed Jobsites</h1>
+                <table class="table table-responsive" id="jobSiteTable2">
+                    <thead>
+                        <tr>
+                            <th>Jobsite ID</th>
+                            <th>Jobsite Name</th>
+                            <th>Address</th>
+                            <th>Primary Contact</th>
+                            <th>Phone Number</th>
+                            <th>E-mail</th>
+                            <th>Location Expenses</th>
+                            <th>Location Revenue</th>
+                            <th>Location Profit</th>
+                            <th>Location Created</th>
+                            <th>Location Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each jobsites}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{jobsite_name}}</td>
+                            <td>{{address}}</td>
+                            <td>{{primary_contact}}</td>
+                            <td>{{phone_number}}</td>
+                            <td>{{email}}</td>
+                            <td>${{location_expenses}}</td>
+                            <td>${{location_revenue}}</td>
+                            <td>${{location_profits}}</td>
+                            <td>{{createdAt}}</td>
+                            <td>{{updatedAt}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

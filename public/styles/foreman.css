@@ -1,0 +1,29 @@
+body {
+  background: url("https://images.pexels.com/photos/1227648/pexels-photo-1227648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+/* FOREMAN VIEW */
+.f-dash,
+.navbar-brand {
+  font-family: 'Black Ops One', cursive;
+  color: #282828;
+  
+}
+
+.navbar {
+  font: #282828;
+}
+
+.card,
+.form-group,
+.table,
+p.lead {
+  font-family: 'Quantico', sans-serif;
+  color: #282828;
+}
+

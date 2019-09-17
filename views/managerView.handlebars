@@ -1,0 +1,520 @@
+<link rel="stylesheet" href="/styles/managerView.css">
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzpotGxOz77z1sqb0HSZM_vCb_BSPdZ1Y&libraries=places&callback=initAutocomplete"
+    async defer></script>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #24355C">
+    <div class="container">
+        <a class="navbar-brand" href="#">Manager tools</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Create!
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="createJob" href="#">Create job</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="addJobsite" href="#">Create jobsite</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="addSuper" href="#">Create supervisor</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="addUser" href="#">Create user</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        View!
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="viewJobs" href="#">View jobs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="viewJobsites" href="#">View jobsites</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="viewSuper" href="#">View supervisors</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="viewCustomer" href="#">View customers</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Search!
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="searchJobs" href="#">Search jobs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="searchSites" href="#">Search jobsites</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="searchSuper" href="#">Search supervisors</a>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="col-lg-12 text-center">
+    <button id="viewBtn" type="button" class="btn btn-primary">Return</button>
+</div>
+<br>
+<div class="container text-center">
+    <div class="jumbotron text-light jumbotron-fluid" style="background-color: #24355C">
+        <div class="container" style="background-color: #24355C">
+            <h1 class="display-4">Manager's Dashboard</h1>
+            <p class="lead">Welcome Manager! You have many tools at your disposal here. Click on the top-right options
+                to get started!</p>
+        </div>
+    </div>
+
+    <!-- Buttons for Manager Options -->
+    {{!-- <div class="row" id="btnBox"> --}}
+
+
+    {{!-- <div class="col-md-4">
+            <button id="createJob" type="button" class="btn">Create Job</button>
+        </div> --}}
+    {{!-- 
+        <div class="col-md-4">
+            <button id="addJobsite" type="button" class="btn">Create Jobsite</button>
+        </div>
+
+        <div class="col-md-4">
+            <button id="addSuper" type="button" class="btn">Create Supervisor</button>
+        </div> --}}
+    {{!-- 
+
+        <div class="col-md-3">
+            <button id="viewJobs" type="button" class="btn">View Jobs</button>
+        </div>
+
+        <div class="col-md-3">
+            <button id="viewJobsites" type="button" class="btn">View Jobsites</button>
+        </div>
+
+        <div class="col-md-3">
+            <button id="viewSuper" type="button" class="btn">View Supervisors</button>
+        </div>
+
+        <div class="col-md-3">
+            <button id="viewCustomer" type="button" class="btn">View Customers</button>
+        </div>
+
+
+        <div class="col-md-4">
+            <button id="searchJobs" type="button" class="btn">Search Jobs</button>
+        </div>
+
+        <div class="col-md-4">
+            <button id="searchSites" type="button" class="btn">Search Jobsites</button>
+        </div>
+
+        <div class="col-md-4">
+            <button id="searchSuper" type="button" class="btn">Search Supervisors</button>
+        </div> --}}
+
+
+
+    {{!-- </div> --}}
+    <br>
+
+
+    {{!-- CREATE NEW JOB TABLE --}}
+    <div class="row add-item">
+        <div class="col text-center card" id="create-project" style="background-color: #24355C">
+            <!-- Create new Job Section (Opens on click triggering a .show() for #create-project) -->
+            <h2>Create New Job</h2>
+            <form id="create-project">
+                <div class="form-group">
+                    <!-- Drop down menu of supervisors to pick from -->
+                    <label for="supervisor-select"> Which supervisor will work this job?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="new-proj-supervisor">
+                        {{#each supervisors}}
+
+                        <option value="{{id}}">{{supervisor_name}}</option>
+
+                        {{/each}}
+                    </select>
+                    <br>
+                    <!-- Drop down menu of jobsites to pick from -->
+                    <label for="jobsite-select"> Which jobsite will this job be at?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="new-proj-jobsite">
+                        {{#each jobsites}}
+
+                        <option value="{{id}}">{{jobsite_name}}</option>
+
+
+                        {{/each}}
+                    </select>
+                    <!-- Input for Project Name -->
+                    <br>
+                    <label for="project-name">Project Name:</label>
+                    <input type="text" id="project-name">
+                    <!-- Input for Project Bid amount -->
+                    <br>
+                    <label for="project-bid">Project Bid Amount:</label>
+                    <input type="text" id="project-bid">
+                </div>
+                <button type="submit">Create Project</button>
+            </form>
+        </div>
+    </div>
+
+    {{!-- ADD JOBSITE TABLE --}}
+    <div class="row add-jobsite">
+        <div class="col text-center card" id="create-jobsite" style="background-color: #24355C">
+            <h2>Create a new Jobsite</h2>
+            <form id="create-jobsite">
+
+                <div class="form-group">
+                    {{!-- Input for Jobsite name --}}
+                    <label for="jobsite-name">What will be the name of this Jobsite?</label>
+                    <input type="text" id="jobsite-name">
+                    <br>
+                    {{!--  Input for Jobsite address --}}
+                    <label for="jobsite-address">What is the address of this Jobsite?</label>
+                    {{!-- <input type="text" id="jobsite-address">
+                    <br> --}}
+                    <span id="locationField">
+                        <input id="jobsite-address" placeholder="Enter your address" onFocus="geolocate()"
+                            type="text" />
+                    </span>
+                    {{!-- Input for Jobsite Primary Contact Person --}}
+                    <label for="jobsite-primarycontact">Who is the primary point of contact for this
+                        Jobsite?</label>
+                    <input type="text" id="jobsite-primarycontact">
+                    <br>
+                    {{!-- Input for Jobsite Phone Number --}}
+                    <label for="jobsite-phone">What is their phone number?</label>
+                    <input type="text" id="jobsite-phone">
+                    <br>
+                    {{!-- Input for Jobsite Email Address --}}
+                    <label for="jobsite-email">What is their email address?</label>
+                    <input type="text" id="jobsite-email">
+
+                </div>
+                <button type="submit">Create Job Site</button>
+            </form>
+        </div>
+    </div>
+
+    {{!-- ADD SUPERVISOR TABLE --}}
+    <div class="row add-supervisor">
+        <div class="col text-center card" id="create-supervisor" style="background-color: #24355C">
+            <h2>Create a new Supervisor</h2>
+            <form id="create-supervisor">
+
+                <div class="form-group">
+
+                    {{!-- Input for Supervisor name --}}
+                    <label for="supervisor-name">What is the name of the new Supervisor?</label>
+                    <input type="text" id="supervisor-name">
+                    <br>
+                    {{!-- Input for Supervisor Specialties --}}
+                    <label for="supervisor-specialties">What are some of the specialties of this
+                        supervisor?</label>
+                    <input type="text" id="supervisor-specialties">
+                    <br>
+
+                </div>
+                <button type="submit">Create Supervisor</button>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    {{!-- ADD User TABLE --}}
+    <div class="row add-user-login">
+        <div class="col text-center card" id="create-login" style="background-color: #24355C">
+            <h2>Create a new User</h2>
+            <form id="create-user">
+
+                <div class="form-group">
+
+                    {{!-- Input for Supervisor name --}}
+                    <label for="user-username">What is the username of this user?</label>
+                    <input type="text" id="user-username">
+                    <br>
+                    {{!-- {!-- Input for Supervisor name --}}
+                    <label for="user-password">What is the password for this user?</label>
+                    <input type="text" id="user-password">
+                    <br>
+                    {{!-- {!-- Input for Supervisor name --}}
+                    <label for="user-email">What is the email for this user?</label>
+                    <input type="text" id="user-email">
+                    <br>
+                    {{!-- {!-- Input for Supervisor name --}}
+                    <label for="user-birthdate">What is the birthdate for this user?</label>
+                    <input type="text" id="user-birthdate">
+                    <br>
+                </div>
+                <button type="submit">Create User</button>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    {{!-- SEARCH SUPERVISOR TABLE --}}
+    <div class="row search-supervisor-row" id="search-supervisor">
+        <div class="col-3 text-center card text-light" id="search-supervisor-col" style="background-color: #24355C">
+            <form id="search-supervisor-form">
+                <div class="form-group">
+                    <label for="supervisor-search"> Which supervisor would you like to search?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="supervisor-search">
+                        {{#each supervisors}}
+
+                        <option value="{{id}}">{{supervisor_name}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit">Search Supervisor</button>
+            </form>
+        </div>
+        <div class="col-9 supervisor-table card text-light" style="background-color: #24355C">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Supervisor ID</th>
+                        <th>Supervisor Name</th>
+                        <th>Jobs Expenses</th>
+                        <th>Jobs Revenues</th>
+                        <th>Jobs Profits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="super-id"></td>
+                        <td id="super-name"></td>
+                        <td id="super-expenses"></td>
+                        <td id="super-revenue"></td>
+                        <td id="super-profits"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <br>
+
+    {{!--  SEARCH JOBSITE TABLE --}}
+    <div class="row search-jobsite-row" id="search-jobsite">
+        <div class="col-3 text-center card text-light" id="search-jobsite-col" style="background-color: #24355C">
+            <form id="search-jobsite-form">
+                <div class="form-group">
+                    <label for="jobsite-search"> Which jobsite would you like to search?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="jobsite-search">
+                        {{#each jobsites}}
+
+                        <option value="{{id}}">{{jobsite_name}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit">Search Jobsite</button>
+            </form>
+        </div>
+        <div class="col-9 jobsite-table card text-light" style="background-color: #24355C">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Jobsite ID</th>
+                        <th>Jobsite Name</th>
+                        <th>Jobsite Total Expenses</th>
+                        <th>Jobsite Total Revenue</th>
+                        <th>Jobsite Total Profits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="jobsite-id"></td>
+                        <td id="jobsite-title"></td>
+                        <td id="jobsite-expenses"></td>
+                        <td id="jobsite-revenue"></td>
+                        <td id="jobsite-profits"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    {{!--  SEARCH JOBS TABLE --}}
+    <div class="row search-jobs-row" id="search-jobs">
+        <div class="col-3 text-center card text-light" id="search-jobs-col" style="background-color: #24355C">
+            <form id="search-jobs-form">
+                <div class="form-group">
+                    <label for="jobs-search"> Which jobsite would you like to search?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="jobs-search">
+                        {{#each jobs}}
+
+                        <option value="{{id}}">{{project_name}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit">Search Jobs</button>
+            </form>
+        </div>
+        <div class="col-9 jobs-table card text-light" style="background-color: #24355C">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Name</th>
+                        <th>Job Bid</th>
+                        <th>Material Costs </th>
+                        <th>Wages Spent</th>
+                        <th>Job profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="jobs-id"></td>
+                        <td id="jobs-title"></td>
+                        <td id="jobs-bid"></td>
+                        <td id="jobs-materialcosts"></td>
+                        <td id="jobs-wagecosts"></td>
+                        <td id="jobs-profit"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    {{!-- Customer Requests --}}
+    <div class="row customer-requests-row" id="customer-requests">
+        <div class="card col" style="height: 50%; background-color: #24355C">
+            <div id="customer-req-table">
+                <div class="text-white" style="background-color: #24355C">
+                    <h3>Customer Requests</h3>
+                    <table class="table table-responsive">
+                        {{#each customers}}
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description:</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>View More</th>
+                                <th>Delete Job</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{customer_name}}</td>
+                                <td>{{customer_description}}</td>
+                                <td>{{customer_address}}</td>
+                                <td>{{customer_email}}</td>
+                                <td>
+                                    <button class="customer-lookup btn btn-success" value="{{id}}">View Info</button>
+                                </td>
+                                <td>
+                                    <button class="customer-delete btn btn-warning" value="{{id}}">Delete Job</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="customer-info-table" style="background-color: #24355C">
+                <div class="color-white text-white" style="background-color: #24355C">
+                    <h3>Selected Customer Information</h3>
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Address</th>
+                                <th>Acreage</th>
+                                <th>Job Description</th>
+                                <th>Price Range</th>
+                                <th>Date Requested</th>
+                                <th>Phone #</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="cust-name"></td>
+                                <td id="cust-address"></td>
+                                <td id="cust-acreage"></td>
+                                <td id="cust-description"></td>
+                                <td id="cust-pricerange"></td>
+                                <td id="cust-daterequested"></td>
+                                <td id="cust-phone"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+
+    var placeSearch, autocomplete;
+
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search predictions to
+        // geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('jobsite-address'), { types: ['geocode'] });
+
+        // Avoid paying for data that you don't need by restricting the set of
+        // place fields that are returned to just the address components.
+        // autocomplete.setFields(['address_component']);
+
+        // When the user selects an address from the drop-down, populate the
+        // address fields in the form.
+        // autocomplete.addListener('place_changed');
+    }
+
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle(
+                    { center: geolocation, radius: position.coords.accuracy });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
