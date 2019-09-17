@@ -12,7 +12,21 @@ FORM.tr, DIV.tr
 SPAN.td
 {
     display:table-cell;
+    height: 10px;
 }
+DIV.tr-main
+{
+ background: white;
+ color: black;
+}
+button {
+    height: 30px
+}
+SPAN.td-fixed {
+    background: white;
+    color: black
+}
+
 </style>
 
 
@@ -27,7 +41,7 @@ SPAN.td
             </div> --}}
     </div>
     <!-- Table to Display All Job Info -->
-    <div class="row">
+    {{!-- <div class="row">
         <div class="col" id="tableBody">
             <div class="table" id="jobSiteTable1">
                 <h1>All Listed Jobs</h1>
@@ -71,20 +85,35 @@ SPAN.td
                 </table>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
+    </div> --}}
+    {{!-- <div class="row">
+        <div class="col"> --}}
             <div class="table">
-                <form class="tr" method="post" action="blah.html">
-                    <span class="td"><input type="text" /></span>
-                    <span class="td"><input type="text" /></span>
-                </form>
-                <div class="tr">
-                    <span class="td">(cell data)</span>
-                    <span class="td">(cell data)</span>
+                <div class="tr tr-main">
+                    <div class="td">"ID"</div>
+                    <span class="td">"Project Name"</span>
+                    <span class="td">"Project Bid"</span>
+                    <span class="td">"Hours"</span>
+                    <span class="td">"Wage Costs"</span>
+                    <span class="td">"Material Costs"</span>
+                    <span class="td">"Profits"</span>
                 </div>
+                
+                {{#each projects}}
+                <form class="tr edit-table">
+                    <span class="td td-fixed">{{id}}</span>
+                    <span class="td"><input type="text" class="project_name-{{id}}" value="{{project_name}}"></span>
+                    <span class="td"><input type="text" class="project_bid-{{id}}" value="{{project_bid}}"></span>
+                    <span class="td"><input type="text" class="hours-{{id}}" value="{{hours}}"></span>
+                    <span class="td"><input type="text" class="wagecosts-{{id}}" value="{{wagecosts}}"></span>
+                    <span class="td"><input type="text" class="materialcosts-{{id}}" value="{{materialcosts}}"></span>
+                    <span class="td td-fixed">{{profit}}</span>
+                    <button type="submit" class="edit-button" value="{{id}}">Submit</button>
+                </form>
+                {{/each}}
+                
             </div>
-        </div>
-    </div>
+        {{!-- </div>
+    </div> --}}
 
 </div>

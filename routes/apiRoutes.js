@@ -243,6 +243,17 @@ module.exports = function (app) {
     });
   });
 
+  app.put("/api/jobtable/:id", function (req, res) {
+    db.Job.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbJobs) {
+      res.json(dbJobs);
+    })
+  })
+
+
   app.put("/api/tasklists", function (req, res) {
     db.Tasks.update(req.body, {
       where: {

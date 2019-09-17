@@ -277,6 +277,51 @@ $(document).ready(function () {
     )
   })
 
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+  $(".edit-button").on("click", function (event) {
+    event.preventDefault();
+    console.log("You've submitted this form");
+
+    console.log($(this).val());
+
+    i = $(this).val();
+
+    var expenses = parseInt($(`.wagecosts-${i}`).val().trim()) + parseInt($(`.materialcosts-${i}`).val().trim());
+    var revenues = parseInt($(`.project_bid-${i}`).val().trim());
+    var newProfits = revenues - expenses;
+
+    var newRow = {
+      project_name: $(`.project_name-${i}`).val().trim(),
+      project_bid: $(`.project_bid-${i}`).val().trim(),
+      hours: $(`.hours-${i}`).val().trim(),
+      wagecosts: $(`.wagecosts-${i}`).val().trim(),
+      materialcosts: $(`.materialcosts-${i}`).val().trim(),
+      profit: newProfits
+    }
+
+    console.log(newRow);
+
+    $.ajax("/api/jobtable/" + i, {
+      type: "PUT",
+      data: newRow
+    }).then(function(){
+      alert("You've updated the table!");
+      location.reload();
+    })
+
+  })
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
   $("#create-supervisor").on("submit", function (event) {
     event.preventDefault();
     console.log("i've been clicked");
